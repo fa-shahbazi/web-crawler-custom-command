@@ -14,8 +14,8 @@ class Category(models.Model):
         ("","audiovisiual"),
         ("","powerbank"),
         ("","smartwatch"),
-        ("","game console"),
-        ("","xiaomi accessories")
+        ("","game_console"),
+        ("","xiaomi_accessories")
     )
     url = models.CharField(verbose_name=_("url"), max_length=350, choices=CATEGORIES)
 
