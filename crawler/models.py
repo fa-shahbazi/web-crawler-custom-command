@@ -4,7 +4,20 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 class Category(models.Model):
-    url = models.URLField(verbose_name=_("url"), max_length=350)
+    CATEGORIES = (
+        ("","mobile_phone"),
+        ("","cable"),
+        ("","cover"),
+        ("","headphones"),
+        ("","screen_protector"),
+        ("","computer_eqipment"),
+        ("","audiovisiual"),
+        ("","powerbank"),
+        ("","smartwatch"),
+        ("","game console"),
+        ("","xiaomi accessories")
+    )
+    url = models.CharField(verbose_name=_("url"), max_length=350, Choices=CATEGORIES)
 
 
 class Product(models.Model):
