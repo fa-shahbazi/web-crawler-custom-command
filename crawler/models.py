@@ -17,7 +17,7 @@ class Category(models.Model):
         ("","game console"),
         ("","xiaomi accessories")
     )
-    url = models.CharField(verbose_name=_("url"), max_length=350, Choices=CATEGORIES)
+    url = models.CharField(verbose_name=_("url"), max_length=350, choices=CATEGORIES)
 
 
 class Product(models.Model):
@@ -25,7 +25,7 @@ class Product(models.Model):
     product_price = models.CharField(verbose_name=_("price"), max_length=50)
     product_category = models.ForeignKey(Category, verbose_name=_('product_category'), on_delete=models.CASCADE)
     created_time = models.DateTimeField(verbose_name=_('Created time'), auto_now_add=True)
-    updated_time = models.DateTimeField(verbose_name=_('updated time'), auto_now= True)
+    updated_time = models.DateTimeField(verbose_name=_('updated time'), auto_now=True)
 
     def __str__(self):
         return self.product_name
