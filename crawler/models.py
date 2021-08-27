@@ -3,10 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 
 # Create your models here.
+class Category(models.Model):
+    url = models.URLField(verbose_name=_("url"), max_length=350)
+
+
 class Product(models.Model):
-    product_name = models.Charfield(verbose_name=_("name"), max_length=130)
-    product_price = models.Charfield(verbose_name=_("price"))
-    product_category = models.ForeignKey(Category, verbose_name=_('product_category'))
+    product_name = models.CharField(verbose_name=_("name"), max_length=130)
+    product_price = models.CharField(verbose_name=_("price"), max_length=50)
+    product_category = models.ForeignKey(Category, verbose_name=_('product_category'), on_delete=models.CASCADE)
     created_time = models.DateTimeField(verbose_name=_('Created time'), auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name=_('updated time'), auto_now= True)
 
@@ -14,8 +18,6 @@ class Product(models.Model):
         return self.product_name
 
 
-class Category(models.model):
-    url = models.URLfield(verbose_name=_("url"), max_length=350)
 
 
 
