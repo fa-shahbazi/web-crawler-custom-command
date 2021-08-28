@@ -2,25 +2,27 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# Create your models here.
 class Category(models.Model):
-    url = models.CharField(verbose_name=_("url"), max_length=350)
+    title = models.CharField(verbose_name=_("title"), max_length=350)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _('Category')
+        verbose_name_plural = _('Categories')
 
 
 class Product(models.Model):
-    product_name = models.CharField(verbose_name=_("product_name"), max_length=130)
-    product_price = models.CharField(verbose_name=_("product_price"), max_length=50)
-    product_category = models.ForeignKey(Category, verbose_name=_('product_category'),default=1, on_delete=models.CASCADE)
+    name = models.CharField(verbose_name=_("name"), max_length=130, blank=True)
+    price = models.CharField(verbose_name=_("price"), max_length=50, blank=True)
+    category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.CASCADE)
     created_time = models.DateTimeField(verbose_name=_('Created time'), auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name=_('updated time'), auto_now=True)
 
     def __str__(self):
-        return self.product_name
+        return self.name
 
-
-
-
-
-
-
-
+    class Meta:
+        verbose_name = _('Product')
+        verbose_name_plural = _('Products')
