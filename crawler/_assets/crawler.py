@@ -2,7 +2,7 @@ import re
 
 import requests
 from bs4 import BeautifulSoup
-from crawler.management.commands._urls import links
+
 
 def crawl_product(url, page_number_limit):
     data = []
