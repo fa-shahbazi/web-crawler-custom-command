@@ -6,6 +6,7 @@ class Category(models.Model):
     title = models.CharField(verbose_name=_("title"), max_length=350)
     created_at = models.DateTimeField(verbose_name=_('created time'), auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name=_("updated time"), auto_now=True)
+    is_enabled = models.BooleanField(verbose_name=_("is_enabled"), default=True)
 
     def __str__(self):
         return self.title
