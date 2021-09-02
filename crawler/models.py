@@ -12,6 +12,7 @@ class Category(models.Model):
         return self.title
 
     class Meta:
+        db_table = 'category'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 
@@ -27,5 +28,6 @@ class Product(models.Model):
         return self.name
 
     class Meta:
+        db_table = 'product'
         verbose_name = _('Product')
         verbose_name_plural = _('Products')
