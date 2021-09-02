@@ -1,9 +1,9 @@
 from django.core.management.base import BaseCommand
 
-from crawler.assets import crawler
-from crawler.assets.urls import links
+from crawler._assets import crawler
+from crawler._assets.urls import links
 from crawler.models import Product, Category
-from crawler.assets.urls import mapper
+from crawler._assets.urls import mapper
 
 
 class Command(BaseCommand):
