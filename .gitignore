@@ -10,6 +10,7 @@ media
 .idea/
 *.idea/*
 
+
 #PyCharm #
 .idea/**/workspace.xml
 .idea/**/tasks.xml
