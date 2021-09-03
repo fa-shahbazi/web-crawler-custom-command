@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crawler.apps.CrawlerConfig',
-    'users.apps.UsersConfig',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
