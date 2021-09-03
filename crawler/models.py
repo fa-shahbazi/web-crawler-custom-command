@@ -20,7 +20,7 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(verbose_name=_("name"), max_length=130, blank=True)
     price = models.CharField(verbose_name=_("price"), max_length=50, blank=True)
-    category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.CASCADE, related_name='products')
     created_time = models.DateTimeField(verbose_name=_('Created time'), auto_now_add=True)
     updated_time = models.DateTimeField(verbose_name=_('updated time'), auto_now=True)
 
