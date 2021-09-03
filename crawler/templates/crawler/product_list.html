@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for product in products%}
-<{{ product.name }}<br></center>
+
+
+<a href="{% url 'crawler:product-detail' product.id %}"> {{product.name}} </a><hr>
+
 {% endfor %}
 {% endblock %}
