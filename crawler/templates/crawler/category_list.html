@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for category in categories %}
+<a href="{%url 'crawler:category-product-list' category.id %}">{{category.title}}</a>
+<p></p>
+
+
+{% endfor %}
+{% endblock %}
