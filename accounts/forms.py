@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from django.contrib.auth.forms import UserChangeForm
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=30, widget=forms.TextInput(
@@ -35,8 +36,18 @@ class UserRegistratinForm(forms.Form):
             if p1 != p2:
                 raise forms.ValidationError("password must match")
 
+#
+# class UserProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ('bio', 'age')
 
-class UserProfileForm(forms.ModelForm):
+
+class UserProfileForm(UserChangeForm):
+    template_name='/something/else'
+
     class Meta:
         model = Profile
-        fields = ('bio', 'age', 'phone_number')
+        fields = (
+            'bio',
+            'age',)
