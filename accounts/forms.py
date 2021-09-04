@@ -41,13 +41,3 @@ class UserRegistratinForm(forms.Form):
 #     class Meta:
 #         model = Profile
 #         fields = ('bio', 'age')
-
-
-class UserProfileForm(UserChangeForm):
-    template_name='/something/else'
-
-    class Meta:
-        model = Profile
-        fields = (
-            'bio',
-            'age',)
