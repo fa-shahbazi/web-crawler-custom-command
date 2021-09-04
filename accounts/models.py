@@ -10,10 +10,10 @@ class Profile(models.Model):
     bio = models.TextField(_('bio'), null=True, blank=True)
 
     class Meta:
+        db_table = 'profiles'
         verbose_name = _('profiles')
         verbose_name_plural = _('profiles')
 
-  
 
 def save_profile(sender, **kwargs):
     if kwargs['created']:
