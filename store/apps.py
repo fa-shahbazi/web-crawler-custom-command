@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
 
-class CrawlerConfig(AppConfig):
+class StoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'crawler'
-    verbose_name = _('Crawler')
-    verbose_name_plural = _('Crawlers')
+    name = 'store'
+    verbose_name = _('Store')
+    verbose_name_plural = _('Stores')

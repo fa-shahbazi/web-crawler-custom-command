@@ -12,7 +12,7 @@ class Category(models.Model):
         return self.title
 
     class Meta:
-        db_table = 'category'
+        db_table = 'categories'
         verbose_name = _('Category')
         verbose_name_plural = _('Categories')
 

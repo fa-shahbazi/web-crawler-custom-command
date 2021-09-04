@@ -23,8 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crawler.apps.CrawlerConfig',
     'accounts.apps.AccountsConfig',
+    'store.apps.StoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -109,7 +109,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOCALE_PATHS = [
-    BASE_DIR / 'crawler'
+    BASE_DIR / 'store'
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -22,7 +22,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, 'u loged in ','success')
-                return redirect('crawler:category-list')
+                return redirect('store:category-list')
             else:
                 messages.error(request, 'wrong username or password','warning')
 
@@ -48,7 +48,7 @@ def user_register(request):
 def user_logout(request):
     logout(request)
     messages.success(request,'logout successfully','success')
-    return redirect('crawler:category-list')
+    return redirect('store:category-list')
 
 
 # @login_required
@@ -59,7 +59,7 @@ def user_logout(request):
 #         if form.is_valid():
 #             form.save()
 #             messages.success(request, 'your profile changed', 'success')
-#             return redirect('crawler:category-list')
+#             return redirect('store:category-list')
 #     else:
 #         form = UserProfileForm(instance=user.profile)
 #     return render(request, 'accounts:profile.html', {'form':form})
