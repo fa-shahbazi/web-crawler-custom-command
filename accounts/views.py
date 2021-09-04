@@ -1,6 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
 from .models import Profile
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
@@ -9,6 +7,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.views import generic
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -51,15 +51,19 @@ def user_logout(request):
     return redirect('crawler:category-list')
 
 
-@login_required
-def user_profile(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
-    if request.method == 'POST':
-        form = UserProfileForm(request.Post, instance=user.profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'your profile changed', 'success')
-            return redirect('crawler:category-list')
-    else:
-        form = UserProfileForm(instance=user.profile)
-    return render(request, 'accounts:profile.html', {'form':form})
+# @login_required
+# def user_profile(request, user_id):
+#     user = get_object_or_404(User, pk=user_id)
+#     if request.method == 'POST':
+#         form = UserProfileForm(request.Post, instance=user.profile)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'your profile changed', 'success')
+#             return redirect('crawler:category-list')
+#     else:
+#         form = UserProfileForm(instance=user.profile)
+#     return render(request, 'accounts:profile.html', {'form':form})
+
+
+
+
