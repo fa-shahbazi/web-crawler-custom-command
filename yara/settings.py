@@ -12,7 +12,6 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 
-# AUTH_USER_MODEL="accounts.User"
 # Application definition
 
 INSTALLED_APPS = [
@@ -128,16 +127,22 @@ CACHES = {
     }
 }
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'accounts.backends.JWTAuthentication',
-#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-#     ],
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ]
-# }
-# AUTH_USER_MODEL = 'accounts.User'
+REST_FRAMEWORK = {
+
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '10/day',
+        'user': '100/day'
+    },
+
+}
 
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.UserAuthenticationBackend',
