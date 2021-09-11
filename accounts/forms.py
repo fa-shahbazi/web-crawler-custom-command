@@ -2,6 +2,14 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
 from django.contrib.auth.forms import UserChangeForm
+from .models import User
+from django import forms
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
+
+from .models import User
+
+
+
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=30, widget=forms.TextInput(
@@ -35,9 +43,8 @@ class UserRegistratinForm(forms.Form):
         if p1 and p2:
             if p1 != p2:
                 raise forms.ValidationError("password must match")
+        return cleaned_data
 
-#
-# class UserProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = ('bio', 'age')
+
+class ActivationCodeForm(forms.Form):
+    code = forms.IntegerField()
