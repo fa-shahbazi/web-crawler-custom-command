@@ -1,4 +1,3 @@
-
 from pathlib import Path
 import os
 from decouple import config, Csv
@@ -13,7 +12,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 
-
+# AUTH_USER_MODEL="accounts.User"
 # Application definition
 
 INSTALLED_APPS = [
@@ -23,8 +22,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # local apps
     'accounts.apps.AccountsConfig',
     'store.apps.StoreConfig',
+    # third party apps
+    # 'jwt',
+    'rest_framework',
+    'rest_framework.authtoken',
+
+
 ]
 
 MIDDLEWARE = [
@@ -115,3 +121,24 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'DataFlair',
+    }
+}
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'accounts.backends.JWTAuthentication',
+#         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+#     ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ]
+# }
+# AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.UserAuthenticationBackend',
+]
