@@ -49,11 +49,10 @@ def user_register(request):
             cache.set('password', cd['password1'], timeout=60)
             cache.set('code', code, timeout=60)
             if code is None:
-                raise ValueError("too late")
+                messages.error(request, 'Too Late', 'warning')
             print(code)
             activation_form = ActivationCodeForm()
             return render(request, 'accounts/confirm_code.html', {'form': activation_form})
-
     else:
         form = UserRegistratinForm()
     return render(request, 'accounts/register.html', {'form': form})
