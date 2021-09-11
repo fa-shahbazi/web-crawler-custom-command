@@ -12,10 +12,11 @@ from django.contrib.auth.models import User
 import random
 import os
 import requests
+from django.conf import settings
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, verbose_name=_("user"), on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_("user"), on_delete=models.CASCADE, related_name='profile')
     age = models.PositiveSmallIntegerField(_("age"), null=True, blank=True)
     bio = models.TextField(_('bio'), null=True, blank=True)
     phone_number = models.PositiveBigIntegerField(_('phone number'), unique=True, null=True, blank=True)
