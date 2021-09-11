@@ -5,11 +5,13 @@ from rest_framework.generics import GenericAPIView, ListCreateAPIView
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from store.pagination_classes import VerySmallPagination
 
 
 class CategoryListApiView(ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    pagination_class = VerySmallPagination
 
     def perform_create(self, serializer):
         serializer.save()
@@ -25,9 +27,12 @@ class CategoryDetailApiView(RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = 'pk'
 
 
+
 class ProductListApiView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    pagination_class = VerySmallPagination
+
 
 
 class ProductDetailApiView(RetrieveUpdateDestroyAPIView):
